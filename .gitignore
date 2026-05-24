@@ -1,0 +1,5 @@
+__pycache__/
+market_data_cache/
+*.db
+bot_run.log
+.env

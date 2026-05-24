@@ -1,0 +1,12 @@
+{
+    "current_capital": 1500.0,
+    "max_open_positions": 4,
+    "cash_flow_history": [
+        {
+            "date": "2026-05-23 18:00:00",
+            "type": "DEPOSIT",
+            "amount": 1500.0
+        }
+    ],
+    "active_positions": {}
+}
