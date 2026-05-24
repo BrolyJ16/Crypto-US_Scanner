@@ -9,7 +9,7 @@ from datetime import datetime
 
 # --- 1. รายชื่อสินทรัพย์เรดาร์ไฮบริด (Crypto + US Stocks 7 กลุ่ม) ---
 CRYPTO_SYMBOLS = ['BTC/USDT', 'ETH/USDT']
-US_STOCKS = [
+STOCK_SYMBOLS = [
     'MSFT', 'AAPL', 'NVDA', 'AVGO', 'AMD', 'CRM', 'ADBE', 'ORCL', 'IBM', 'QCOM',
     'GOOGL', 'META', 'NFLX', 'DIS', 'VZ', 'AMZN', 'TSLA', 'HD', 'NKE', 'MCD',
     'LLY', 'JNJ', 'UNH', 'MRK', 'ABBV', 'PFE', 'TMO', 'ABT', 'JPM', 'BRK-B',
@@ -176,7 +176,7 @@ def optimize_all_assets():
     start_runtime = time.time()
     print("--- 🛠️ STARTING ADVANCED HYBRID ASSET OPTIMIZATION (WITH ETFS) 🛠️ ---")
     optimized_results = {}
-    all_symbols = CRYPTO_SYMBOLS + US_STOCKS + ETF_SYMBOLS
+    all_symbols = CRYPTO_SYMBOLS + STOCK_SYMBOLS + ETF_SYMBOLS
     
     for symbol in all_symbols:
         print(f"\n⏳ Simulating & Optimizing: {symbol}...")
