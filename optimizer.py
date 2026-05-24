@@ -9,70 +9,12 @@ from datetime import datetime
 
 # --- 1. รายชื่อสินทรัพย์เรดาร์ไฮบริด (Crypto + US Stocks 7 กลุ่ม) ---
 CRYPTO_SYMBOLS = ['BTC/USDT', 'ETH/USDT']
-STOCK_SYMBOLS = [
-    'AAPL', 'MSFT', 'NVDA', 'AMZN', 'META', 'GOOGL', 'GOOG', 'LLY', 'AVGO',
-    'TSLA', 'JPM', 'UNH', 'XOM', 'V', 'HD', 'PG', 'MA', 'COST', 'JNJ',
-    'AMD', 'ABBV', 'MRK', 'CRM', 'ORCL', 'CTAS', 'CVX', 'NFLX', 'BAC', 'WMT',
-    'WFC', 'GE', 'CSCO', 'AMAT', 'INTC', 'AXP', 'QCOM', 'TXN', 'SPGI', 'UNP',
-    'PM', 'AMGN', 'HON', 'LOW', 'ISRG', 'IBM', 'GEV', 'PGR', 'GS', 'LRCX',
-    'PLTR', 'BKNG', 'T', 'MS', 'COP', 'ELV', 'NEE', 'REGN', 'RTX', 'MCD',
-    'PANW', 'TMUS', 'SLB', 'CAT', 'DE', 'TJX', 'VRTX', 'MU', 'LMT', 'GEHC',
-    'CI', 'ADP', 'C', 'SYK', 'BSX', 'MDLZ', 'ADI', 'FI', 'CB', 'ETN',
-    'BMY', 'KKR', 'MMC', 'SCHW', 'NOC', 'ANET', 'WM', 'PLD', 'CVS', 'SHW',
-    'EOG', 'MO', 'HCA', 'ICE', 'APH', 'AON', 'MCK', 'PH', 'ABT', 'GILD',
-    'CMG', 'SRE', 'TGT', 'SLG', 'FTNT', 'MAR', 'USB', 'MCO', 'ECL', 'CRWD',
-    'ORLY', 'EMR', 'CTSH', 'ADSK', 'CNC', 'FCX', 'MPC', 'PSX', 'PCAR', 'GD',
-    'EW', 'AJG', 'NSC', 'NKE', 'ROST', 'WELL', 'DHR', 'PXD', 'BDX', 'MET',
-    'O', 'PSA', 'CEG', 'NXPI', 'CPRT', 'KMB', 'AEP', 'HUM', 'D', 'HWM',
-    'ALL', 'COF', 'BKR', 'GWW', 'LHX', 'DOW', 'TRV', 'WEC', 'STZ', 'WDC',
-    'STX', 'KLAC', 'MDT', 'A', 'AAL', 'AAP', 'ABNB', 'ACGL', 'ACN', 'ADBE',
-    'ADI', 'ADM', 'ADP', 'ADSK', 'AEE', 'AEF', 'AFL', 'AIG', 'AIZ', 'AJG',
-    'AKAM', 'ALB', 'ALGN', 'ALK', 'ALLE', 'AMCR', 'AME', 'AMG', 'AMGN', 'AMP',
-    'AMT', 'AON', 'AOS', 'APA', 'APD', 'APG', 'APH', 'APO', 'ARE', 'ATO',
-    'AVB', 'AVY', 'AWK', 'AXON', 'AZO', 'BA', 'BALL', 'BAX', 'BBWI', 'BBY',
-    'BDX', 'BEN', 'BF.B', 'BG', 'BIIB', 'BIO', 'BK', 'BKI', 'BLK', 'BLL',
-    'BMY', 'BR', 'BRO', 'BSX', 'BWA', 'BXP', 'CAG', 'CAH', 'CARR', 'CAT',
-    'CB', 'CERE', 'CBOE', 'CBRE', 'CCI', 'CCK', 'CCL', 'CDNS', 'CDW', 'CE',
-    'CF', 'CFG', 'CHD', 'CHRW', 'CHTR', 'CI', 'CINF', 'CL', 'CLX', 'CMA',
-    'CMCSA', 'CME', 'CMG', 'CMI', 'CMS', 'CNC', 'CNP', 'COF', 'COO', 'COP',
-    'COR', 'COTY', 'CPB', 'CPRT', 'CPT', 'CRL', 'CRM', 'CRWD', 'CSGP', 'CSX',
-    'CTAS', 'CTLT', 'CTRA', 'CTSH', 'CTVA', 'CVS', 'CVX', 'CZR', 'D', 'DAL',
-    'DD', 'DE', 'DECK', 'DFS', 'DG', 'DGX', 'DHI', 'DHR', 'DIS', 'DAY',
-    'DLR', 'DLTR', 'DOV', 'DOW', 'DPZ', 'DRI', 'DTE', 'DUK', 'DVA', 'DVN',
-    'DXCM', 'DXC', 'EA', 'EBAY', 'ECL', 'ED', 'EFX', 'EG', 'EIX', 'EL',
-    'ELV', 'EMN', 'EMR', 'ENPH', 'EOG', 'EPAM', 'EQIX', 'EQR', 'EQT', 'ES',
-    'ESS', 'ETN', 'ETR', 'ETSY', 'EVRG', 'EW', 'EXC', 'EXPD', 'EXPE', 'EXR',
-    'F', 'FANG', 'FAST', 'FI', 'FICO', 'FIS', 'FLT', 'FMC', 'FOX', 'FOXA',
-    'FRT', 'FSLR', 'FTNT', 'FTV', 'GD', 'GE', 'GEHC', 'GEN', 'GEV', 'GILD',
-    'GIS', 'GL', 'GLW', 'GM', 'GNRC', 'GOOG', 'GOOGL', 'GPC', 'GPN', 'GRMN',
-    'GS', 'GWW', 'HAL', 'HAS', 'HBAN', 'HCA', 'HD', 'HES', 'HIG', 'HII',
-    'HLT', 'HOLX', 'HON', 'HPE', 'HPQ', 'HRL', 'HSIC', 'HST', 'HSY', 'HUBB',
-    'HUM', 'HWM', 'IBM', 'ICE', 'IDXX', 'IEX', 'IFF', 'ILMN', 'INCY', 'INTC',
-    'INTU', 'INVH', 'IONQ', 'IP', 'IPG', 'IQV', 'IR', 'IRM', 'ISRG', 'IT',
-    'ITW', 'IVZ', 'J', 'JBHT', 'JBL', 'JCI', 'JKHY', 'JNJ', 'JNPR', 'JPM',
-    'K', 'KDP', 'KEY', 'KEYS', 'KHC', 'KIM', 'KLAC', 'KMB', 'KMI', 'KMX',
-    'KO', 'KR', 'KVUE', 'L', 'LDOS', 'LEN', 'LH', 'LHX', 'LIN', 'LKQ',
-    'LLY', 'LMT', 'LNT', 'LOW', 'LRCX', 'LULU', 'LUV', 'LVS', 'LW', 'LYB',
-    'LYV', 'M', 'MA', 'MAA', 'MAR', 'MAS', 'MAT', 'MCD', 'MCHP', 'MCK',
-    'MCO', 'MDLZ', 'MDT', 'MET', 'META', 'MGM', 'MHK', 'MIK', 'MKC', 'MKTX',
-    'MLM', 'MMC', 'MMM', 'MNST', 'MO', 'MOH', 'MOS', 'MPC', 'MPWR', 'MRK',
-    'MRNA', 'MS', 'MSCI', 'MSFT', 'MSI', 'MTB', 'MTD', 'MU', 'NCLH', 'NDAQ',
-    'NDSN', 'NEE', 'NEM', 'NFLX', 'NI', 'NKE', 'NOC', 'NOW', 'NRG', 'NSC',
-    'NTAP', 'NTRS', 'NUE', 'NVDA', 'NVR', 'NXPI', 'O', 'ODFL', 'OKE', 'OMC',
-    'ON', 'ORLY', 'OTIS', 'OXY', 'PANW', 'PARA', 'PAYX', 'PAYC', 'PCTY', 'PKG',
-    'PKI', 'PLD', 'PLTR', 'PM', 'PNC', 'PNR', 'PNW', 'PODD', 'POOL', 'PPG',
-    'PPL', 'PRU', 'PSA', 'PSX', 'PTC', 'PWR', 'PXD', 'PYPL', 'QCOM', 'QRVO',
-    'RCL', 'RE', 'REG', 'REGN', 'RF', 'RHI', 'RMD', 'ROK', 'ROL', 'ROP',
-    'ROST', 'RRE', 'RSG', 'RTX', 'RVTY', 'SBUX', 'SCHE', 'SCHW', 'SHW', 'SIRE',
-    'SJM', 'SNA', 'SNPS', 'SO', 'SPG', 'SPGI', 'SRE', 'STE', 'STT', 'STZ',
-    'SWK', 'SWKS', 'SYF', 'SYK', 'SYY', 'T', 'TAP', 'TDG', 'TDY', 'TECH',
-    'TEL', 'TER', 'TFC', 'TFX', 'TGT', 'TIW', 'TJX', 'TKR', 'TMUS', 'TROW',
-    'TRGP', 'TRV', 'TSCO', 'TSLA', 'TSN', 'TT', 'TTWO', 'TXN', 'TXT', 'TYL',
-    'UAL', 'UDR', 'UHS', 'ULTA', 'UNH', 'UNP', 'UPS', 'URI', 'USB', 'V',
-    'VALE', 'VEEV', 'VFC', 'VICI', 'VLO', 'VMC', 'VOD', 'VRSK', 'VRSN', 'VRTX',
-    'VTR', 'VTRS', 'VZ', 'WAB', 'WAT', 'WBA', 'WBD', 'WEC', 'WELL', 'WFC',
-    'WHR', 'WM', 'WMB', 'WMT', 'WRB', 'WST', 'WTW', 'WY', 'WYNN', 'XOM',
-    'XRAY', 'XYL', 'YUM', 'ZBH', 'ZBRA', 'ZTS'
+US_STOCKS = [
+    'MSFT', 'AAPL', 'NVDA', 'AVGO', 'AMD', 'CRM', 'ADBE', 'ORCL', 'IBM', 'QCOM',
+    'GOOGL', 'META', 'NFLX', 'DIS', 'VZ', 'AMZN', 'TSLA', 'HD', 'NKE', 'MCD',
+    'LLY', 'JNJ', 'UNH', 'MRK', 'ABBV', 'PFE', 'TMO', 'ABT', 'JPM', 'BRK-B',
+    'V', 'MA', 'BAC', 'GS', 'MS', 'PG', 'COST', 'WMT', 'KO', 'PEP',
+    'PM', 'XOM', 'CVX', 'CAT', 'GE', 'LMT', 'RTX', 'UNP', 'UPS', 'HON'
 ]
 ETF_SYMBOLS = ['VT', 'ACWI', 'VXUS', 'VEA', 'VWO', 
                'QQQ', 'SMH', 'XLK', 'XLV', 'XLF', 'IBUY', 'TAN',
@@ -234,7 +176,7 @@ def optimize_all_assets():
     start_runtime = time.time()
     print("--- 🛠️ STARTING ADVANCED HYBRID ASSET OPTIMIZATION (WITH ETFS) 🛠️ ---")
     optimized_results = {}
-    all_symbols = CRYPTO_SYMBOLS + STOCK_SYMBOLS + ETF_SYMBOLS
+    all_symbols = CRYPTO_SYMBOLS + US_STOCKS + ETF_SYMBOLS
     
     for symbol in all_symbols:
         print(f"\n⏳ Simulating & Optimizing: {symbol}...")
